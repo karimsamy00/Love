@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>إهداء ل لولو ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Tahoma", sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 2s;
+    }
+
+    .container {
+      max-width: 600px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      text-align: center;
+      overflow-y: auto;
+      max-height: 70vh;
+      z-index: 2;
+      position: relative;
+    }
+
+    h1 {
+      color: #e91e63;
+      font-size: 28px;
+      margin-bottom: 15px;
+      animation: pulse 2s infinite;
+    }
+
+    p {
+      font-size: 20px;
+      color: #333;
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      background: #e91e63;
+      color: white;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ad1457;
+    }
+
+    /* الورود */
+    .flower {
+      position: fixed;
+      top: -50px;
+      font-size: 30px;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* القلوب */
+    .heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 25px;
+      animation: rise linear forwards;
+      color: red;
+    }
+
+    @keyframes rise {
+      to {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    @keyframes pulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.1); color: #ff4081; }
+    }
+h1 {
+  color: #ff69b4; /* لون الكلمة */
+  text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493, 0 0 30px #ff69b4, 0 0 40px #ff1493;
+}
+h1 {
+  color: #ff69b4;
+  text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493, 0 0 30px #ff69b4;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493, 0 0 30px #ff69b4;
+  }
+  50% {
+    transform: scale(1.1);
+    text-shadow: 0 0 20px #ff1493, 0 0 30px #ff69b4, 0 0 40px #ff1493;
+  }
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493, 0 0 30px #ff69b4;
+  }
+}
+.gift-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff1493;
+  transition: transform 0.2s ease;
+}
+
+.gift-btn:hover {
+  transform: scale(1.1);
+}
+
+.gift-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 150px;
+  height: 150px;
+  background: #ff1493;
+  border-radius: 10px;
+  animation: popUp 0.5s forwards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 30px #ff66b2;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>إلى لولو ❤️</h1>
+    <p id="message"></p>
+    <button onclick="playSong()">🎵 شغلي الأغنية يا لول 🎵</button>
+    <button onclick="changeMood()">🌈 غيّري المود 🌈</button>
+  </div>
+
+  <audio id="song">
+    <source src="https://h.uguu.se/TNRTEKWv.mp3" type="audio/mpeg">
+    متأسف، المتصفح مش بيدعم تشغيل الصوت.
+  </audio>
+
+  <script>
+    const text = `مهما يحاولوا يطفوا الشمس 🌞 .. هتفضلي منورة حياتي يا آلاء (لولو) 💕
+إنتي السبب اللي بيخليني أبتسم كل يوم 😍
+بحبك أكتر مما تتخيلي 💖`;
+
+    let i = 0;
+    const speed = 70;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("message").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+    typeWriter();
+
+    // تشغيل الأغنية
+    function playSong() {
+      const song = document.getElementById("song");
+      song.play();
+
+      // قلوب تطلع لفوق
+      const interval = setInterval(createHeart, 600);
+      song.onended = () => clearInterval(interval);
+    }
+
+    // تغيير المود (الخلفية)
+    let mood = 0;
+    function changeMood() {
+      const moods = [
+        "linear-gradient(to right, #ff9a9e, #fad0c4)",
+        "linear-gradient(to right, #a1c4fd, #c2e9fb)",
+        "linear-gradient(to right, #fbc2eb, #a6c1ee)",
+        "linear-gradient(to right, #ffecd2, #fcb69f)"
+      ];
+      mood = (mood + 1) % moods.length;
+      document.body.style.background = moods[mood];
+    }
+
+    // الورود 🌹
+    function createFlower() {
+      const flower = document.createElement("div");
+      flower.classList.add("flower");
+      flower.innerText = "🌹";
+
+      flower.style.left = Math.random() * window.innerWidth + "px";
+      flower.style.animationDuration = (3 + Math.random() * 5) + "s";
+
+      document.body.appendChild(flower);
+
+      setTimeout(() => {
+        flower.remove();
+      }, 8000);
+    }
+    setInterval(createFlower, 800);
+
+    // القلوب ❤️
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerText = "❤️";
+
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+  </script>
+<script>
+  function openGift() {
+    const giftBox = document.createElement("div");
+    giftBox.classList.add("gift-box");
+    document.body.appendChild(giftBox);
+
+    // بعد ثانية يتفتح الصندوق وتطلع قلوب ونجوم
+    setTimeout(() => {
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement("div");
+        particle.classList.add("particle");
+        particle.innerText = Math.random() > 0.5 ? "❤️" : "✨";
+        particle.style.left = Math.random() * 100 + "vw";
+        particle.style.top = "50%";
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+          particle.remove();
+        }, 3000);
+      }
+      giftBox.remove();
+    }, 1000);
+  }
+</script>
+</body>
+</html>
